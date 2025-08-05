@@ -1,12 +1,12 @@
 import axios from "axios";
-
+import { getIFSCDetails } from "../services/api";
 export default function RecentSearches({ recent, onSearch }) {
   if (recent.length === 0) return null;
 
   const handleClick = async (code) => {
-    const res = await axios.get(`http://localhost:5000/api/ifsc/${code}`);
-    onSearch(res.data, code);
-  };
+  const res = await getIFSCDetails(code);
+  onSearch(res.data, code);
+};
 
   return (
     <div className="mb-4">
